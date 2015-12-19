@@ -1,0 +1,80 @@
+diff -ruN 20150210 - FIRMWARE - Repetier 0.922 - FELIX_3_0_SINGLE_extrusion_orig/Repetier-Firmware/Repetier/Configuration.h 20150210 - FIRMWARE - Repetier 0.922 - FELIX_3_0_SINGLE_extrusion/Repetier-Firmware/Repetier/Configuration.h
+--- 20150210 - FIRMWARE - Repetier 0.922 - FELIX_3_0_SINGLE_extrusion_orig/Repetier-Firmware/Repetier/Configuration.h	2015-02-25 10:51:00.000000000 +0100
++++ 20150210 - FIRMWARE - Repetier 0.922 - FELIX_3_0_SINGLE_extrusion/Repetier-Firmware/Repetier/Configuration.h	2015-12-19 23:19:58.000000000 +0100
+@@ -70,7 +70,7 @@
+ #define EXT0_X_OFFSET 0
+ #define EXT0_Y_OFFSET 0
+ #define EXT0_STEPS_PER_MM 164
+-#define EXT0_TEMPSENSOR_TYPE 1
++#define EXT0_TEMPSENSOR_TYPE 8
+ #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
+ #define EXT0_HEATER_PIN HEATER_0_PIN
+ #define EXT0_STEP_PIN ORIG_E0_STEP_PIN
+@@ -85,9 +85,9 @@
+ #define EXT0_WATCHPERIOD 1
+ #define EXT0_PID_INTEGRAL_DRIVE_MAX 125
+ #define EXT0_PID_INTEGRAL_DRIVE_MIN 40
+-#define EXT0_PID_PGAIN_OR_DEAD_TIME 12
+-#define EXT0_PID_I 0.5
+-#define EXT0_PID_D 65
++#define EXT0_PID_PGAIN_OR_DEAD_TIME 29.73
++#define EXT0_PID_I 4.79
++#define EXT0_PID_D 46.09
+ #define EXT0_PID_MAX 255
+ #define EXT0_ADVANCE_K 0
+ #define EXT0_ADVANCE_L 0
+@@ -319,10 +319,10 @@
+ 
+ // #################### Z-Probing #####################
+ 
+-#define FEATURE_Z_PROBE 0
++#define FEATURE_Z_PROBE 1
+ #define Z_PROBE_BED_DISTANCE 10
+-#define Z_PROBE_PIN -1
+-#define Z_PROBE_PULLUP 0
++#define Z_PROBE_PIN 41
++#define Z_PROBE_PULLUP 1
+ #define Z_PROBE_ON_HIGH 0
+ #define Z_PROBE_X_OFFSET 0
+ #define Z_PROBE_Y_OFFSET 0
+@@ -332,15 +332,15 @@
+ #define Z_PROBE_SWITCHING_DISTANCE 1
+ #define Z_PROBE_REPETITIONS 1
+ #define Z_PROBE_HEIGHT 40
+-#define Z_PROBE_START_SCRIPT ""
+-#define Z_PROBE_FINISHED_SCRIPT ""
++#define Z_PROBE_START_SCRIPT "G28 X Y"
++#define Z_PROBE_FINISHED_SCRIPT "G28 X Y"
+ #define FEATURE_AUTOLEVEL 1
+-#define Z_PROBE_X1 20
+-#define Z_PROBE_Y1 20
+-#define Z_PROBE_X2 160
+-#define Z_PROBE_Y2 20
+-#define Z_PROBE_X3 100
+-#define Z_PROBE_Y3 160
++#define Z_PROBE_X1 120
++#define Z_PROBE_Y1 -28
++#define Z_PROBE_X2 195
++#define Z_PROBE_Y2 32
++#define Z_PROBE_X3 120
++#define Z_PROBE_Y3 152
+ #define FEATURE_AXISCOMP 0
+ #define AXISCOMP_TANXY 0
+ #define AXISCOMP_TANYZ 0
+@@ -791,4 +791,4 @@
+ }
+ ========== End configuration string ==========
+ 
+-*/
++*/
+diff -ruN 20150210 - FIRMWARE - Repetier 0.922 - FELIX_3_0_SINGLE_extrusion_orig/Repetier-Firmware/Repetier/pins.h 20150210 - FIRMWARE - Repetier 0.922 - FELIX_3_0_SINGLE_extrusion/Repetier-Firmware/Repetier/pins.h
+--- 20150210 - FIRMWARE - Repetier 0.922 - FELIX_3_0_SINGLE_extrusion_orig/Repetier-Firmware/Repetier/pins.h	2015-02-15 14:22:54.000000000 +0100
++++ 20150210 - FIRMWARE - Repetier 0.922 - FELIX_3_0_SINGLE_extrusion/Repetier-Firmware/Repetier/pins.h	2015-12-19 20:53:56.000000000 +0100
+@@ -1592,6 +1592,7 @@
+ #define MOSI_PIN         51	// PINB.2, 21, MOSI
+ #define MAX6675_SS       -1//53	// PINB.0, 19, SS
+ 
++
+ #define BEEPER_PIN        -1  // Activate beeper on extension shield
+ #define BEEPER_TYPE        1
+ 
